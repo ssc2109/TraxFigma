@@ -1,0 +1,255 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Trax Inicio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Geist Font (User requested specifically for interface/cards) -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "app-bg": "#000000",
+                        "app-card": "#161616",
+                        "primary": "#ffffff",
+                        "surface-container-high": "#2a2a2a",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.25rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter-card": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-page": "20px",
+                        "section-gap": "40px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Bai Jamjuree"], // Hero numbers (Harabara alternative)
+                        "numeric-xl": ["Bai Jamjuree"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Geist"], // UI Text in cards/interface
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Geist"]
+                    },
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom hide scrollbar */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body class="bg-app-bg text-primary font-body-md antialiased min-h-screen pb-[120px] relative">
+<div class="relative z-10">
+<!-- TopAppBar -->
+<header class="w-full pt-4 bg-transparent flex justify-between items-center px-margin-page py-4 transition-opacity duration-200 sticky top-0 z-40">
+<div class="flex items-center gap-3"><div class="flex items-center gap-3">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX_nEXFTI6YbuHcW5VmD2uWb_f7LBRHuG8E0V0cStkFXFaXLgRnpnVp0Hae3QnplEECajZX02AHYyIz3BK0LWf0fzoB2JRE0iCNkth7HUz1ng42U2VleTwjMZUv9V4qZ6aR7kMkaKu3qh9tCQdy7kC4nwOG94BaFZbwHQVzlRaB0fUSlHhjeR0YZVYKM-1UzUmwSl-jYctK6P3HAm1BWZ8cLHwt8nnFFh1Tf5DPxt4Rd2fjTIawph33OYVN8m6tZsDHH25g1i6CCU" class="w-12 h-12 rounded-full object-cover border-2 border-white/10" alt="Profile">
+    <div class="flex flex-col">
+        <span class="font-['Geist'] text-xs text-primary/60 font-medium uppercase tracking-wider">Ecoarom</span>
+        <h1 class="font-['Geist'] text-[20px] text-primary tracking-tight leading-tight font-medium mt-0.5" style="font-family: 'Geist', sans-serif;">Buenos días, Alberto</h1>
+    </div>
+</div></div>
+<button class="text-primary hover:opacity-80 transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</header>
+<main class="px-margin-page mt-4 flex flex-col gap-section-gap">
+<!-- Hero Section (Floating Number) - Keeps Bai Jamjuree as requested for Hero -->
+<section class="flex flex-col items-center justify-center text-center py-8">
+<span class="font-label-md text-sm text-primary/70 uppercase tracking-widest mb-2 font-medium font-['Geist']">Ventas de Hoy</span>
+<div class="flex items-start justify-center gap-1 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+<span class="font-display-lg text-[64px] leading-none text-primary font-bold tracking-tight">
+<span class="text-[32px] text-primary/60 font-medium align-top mr-1">S/</span>1.25K
+                    </span>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="grid grid-cols-4 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 bg-app-card rounded-[32px] p-4 hover:bg-app-card/80 transition-colors duration-200">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="font-label-md text-sm text-primary font-['Geist']">Cobrar</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 bg-app-card rounded-[32px] p-4 hover:bg-app-card/80 transition-colors duration-200">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">handshake</span>
+</div>
+<span class="font-label-md text-sm text-primary font-['Geist']">Fiar</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 bg-app-card rounded-[32px] p-4 hover:bg-app-card/80 transition-colors duration-200">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<span class="font-label-md text-sm text-primary font-['Geist']">Escanear</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 bg-app-card rounded-[32px] p-4 hover:bg-app-card/80 transition-colors duration-200">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">more_horiz</span>
+</div>
+<span class="font-label-md text-sm text-primary font-['Geist']">Ver todo</span>
+</button>
+</section>
+<!-- AI Slot -->
+<section class="bg-app-card rounded-[32px] p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<p class="font-body-md text-sm text-primary/80 max-w-[200px] font-['Geist']">Hoy tienes 3 cosas que cuidar. ¿Te las muestro?</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</button>
+</section>
+<!-- AI Tips Section: Para ti hoy - Now using Geist -->
+<section class="flex flex-col gap-4">
+<h2 class="text-[20px] text-primary font-semibold font-['Bai_Jamjuree']">Para ti hoy</h2>
+<div class="bg-surface-container-high rounded-[32px] p-6 flex items-start justify-between cursor-pointer active:scale-[0.98] transition-transform duration-200">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2 opacity-70">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<span class="font-label-md text-sm uppercase tracking-wider font-semibold font-['Geist']">Trax AI</span>
+</div>
+<p class="font-body-md text-base leading-relaxed text-primary/90 max-w-[280px] font-['Geist'] font-medium">
+                            Rosa, hoy es un buen día para reponer stock de abarrotes. Tus ventas subieron un 12%.
+                        </p>
+</div>
+<div class="mt-2 text-primary/40">
+<span class="material-symbols-outlined text-[28px]">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Actividad Reciente - Now using Geist for all text and numbers -->
+<section class="flex flex-col gap-4">
+<h2 class="text-[20px] text-primary font-semibold font-['Bai_Jamjuree']">Actividad Reciente</h2>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-4 bg-app-card rounded-[32px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">storefront</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-primary text-sm font-medium font-['Geist']">Venta Mostrador</span>
+<span class="font-label-sm text-xs text-primary/60 font-['Geist']">Hoy, 10:42 AM</span>
+</div>
+</div>
+<span class="font-['Bai_Jamjuree'] text-primary font-bold text-base">+S/ 120.00</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-4 bg-app-card rounded-[32px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">handshake</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-primary text-sm font-medium font-['Geist']">Pago de Fiado</span>
+<span class="font-label-sm text-xs text-primary/60 font-['Geist']">Hoy, 09:15 AM</span>
+</div>
+</div>
+<span class="font-['Bai_Jamjuree'] text-primary font-bold text-base">+S/ 45.50</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-4 bg-app-card rounded-[32px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-primary text-sm font-medium font-['Geist']">Pago Proveedor</span>
+<span class="font-label-sm text-xs text-primary/60 font-['Geist']">Ayer, 04:30 PM</span>
+</div>
+</div>
+<span class="font-['Bai_Jamjuree'] text-[#FFB4AB] font-bold text-base">-S/ 350.00</span>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between p-4 bg-app-card rounded-[32px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">smartphone</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-primary text-sm font-medium font-['Geist']">Cobro Yape</span>
+<span class="font-label-sm text-xs text-primary/60 font-['Geist']">Ayer, 02:10 PM</span>
+</div>
+</div>
+<span class="font-['Bai_Jamjuree'] text-primary font-bold text-base">+S/ 18.00</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-app-card flex justify-around items-center h-20 px-4 z-50">
+<!-- Tab 1: Inicio (Active) -->
+<button class="flex flex-col items-center justify-center text-primary transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-[10px] mt-1">Inicio</span>
+</button>
+<!-- Tab 2: Ventas -->
+<button class="flex flex-col items-center justify-center text-white/50 hover:text-white transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+<span class="font-label-sm text-[10px] mt-1">Ventas</span>
+</button>
+<!-- Tab 3: Trax (FAB) -->
+<button class="flex flex-col items-center justify-center relative -top-6">
+<div class="w-16 h-16 rounded-full bg-white text-app-bg flex items-center justify-center hover:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
+</div>
+
+</button>
+<!-- Tab 4: Negocio -->
+<button class="flex flex-col items-center justify-center text-white/50 hover:text-white transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">storefront</span>
+<span class="font-label-sm text-[10px] mt-1">Negocio</span>
+</button>
+<!-- Tab 5: Crecer -->
+<button class="flex flex-col items-center justify-center text-white/50 hover:text-white transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+<span class="font-label-sm text-[10px] mt-1">Crecer</span>
+</button>
+</nav>
+
+
+
+
+
+
+
+
+
+
+</body></html>

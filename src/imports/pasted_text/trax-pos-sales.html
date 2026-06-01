@@ -1,0 +1,224 @@
+<!DOCTYPE html><html class="dark" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Trax POS - Ventas</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "app-bg": "#000000",
+                        "app-card": "#161616",
+                        "primary": "#ffffff",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#c4c7c8",
+                        "outline": "#8e9192",
+                        "outline-variant": "#444748",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.25rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter-card": "16px",
+                        "stack-lg": "24px",
+                        "section-gap": "40px",
+                        "margin-page": "20px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Bai Jamjuree"],
+                        "numeric-xl": ["Bai Jamjuree"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Geist"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-app-bg text-primary font-body-md antialiased min-h-screen pb-40">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl">
+<div class="flex justify-between items-center h-16 px-5 max-w-lg mx-auto">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/10">
+<img alt="User profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX_nEXFTI6YbuHcW5VmD2uWb_f7LBRHuG8E0V0cStkFXFaXLgRnpnVp0Hae3QnplEECajZX02AHYyIz3BK0LWf0fzoB2JRE0iCNkth7HUz1ng42U2VleTwjMZUv9V4qZ6aR7kMkaKu3qh9tCQdy7kC4nwOG94BaFZbwHQVzlRaB0fUSlHhjeR0YZVYKM-1UzUmwSl-jYctK6P3HAm1BWZ8cLHwt8nnFFh1Tf5DPxt4Rd2fjTIawph33OYVN8m6tZsDHH25g1i6CCU">
+</div>
+<h1 class="font-display-lg text-xl font-bold tracking-tight text-primary">Trax</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary/70">search</span>
+</button>
+</div>
+</header>
+<main class="mt-16 px-5 max-w-lg mx-auto space-y-6">
+<!-- Search Bar -->
+<div class="pt-4">
+<div class="relative flex items-center bg-app-card rounded-full px-4 h-14">
+<span class="material-symbols-outlined text-primary/40 mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-primary w-full font-body-md placeholder:text-primary/30" placeholder="Buscar productos o códigos..." type="text">
+<span class="material-symbols-outlined text-primary/60 ml-2">barcode_scanner</span>
+</div>
+</div>
+<!-- Categories Chips -->
+<div class="flex overflow-x-auto gap-3 hide-scrollbar -mx-5 px-5 py-2">
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-white text-black font-label-md transition-transform active:scale-95">Todo</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-app-card text-primary/60 font-label-md hover:text-white transition-all active:scale-95">Bebidas</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-app-card text-primary/60 font-label-md hover:text-white transition-all active:scale-95">Snacks</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-app-card text-primary/60 font-label-md hover:text-white transition-all active:scale-95">Pan</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-app-card text-primary/60 font-label-md hover:text-white transition-all active:scale-95">Abarrotes</button>
+</div>
+<!-- Product Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Product Card 1: Inca Kola -->
+<div class="bg-app-card rounded-[28px] flex flex-col min-h-[220px] relative overflow-hidden active:scale-[0.98] transition-transform">
+<img alt="Inca Kola 500ml" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIEGUSEOMQVifnuSnddp6BZ_JLrNbl-PdAXbynfq634Fo0JNOp2pnByaXsZMp7AeJUgJbcAwCG4kEgtiYQEJ-ttBkMEYSIvqqJNVhCT3rPfmipDx3P9I1_9EiNqA7sfnRChZsiOFXRj7K-zODhsXJ__93ffU46O6WghCOTnSTI96q2_uhKwfYFSBhlYOkEJOPhzyXIAfY3fyJHbGvPWf7gAMlbPfdPMAE6sJa_ogJU4FwwsQ7qNrsVT5Qbz_kpmU4PaeLxuAOuVt0">
+<div class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold font-['Geist']">S/ 3.50</div>
+<div class="p-4 relative z-10 mt-auto">
+<h3 class="font-['Geist'] font-semibold text-white text-sm">Inca Kola 500ml</h3>
+<p class="font-['Geist'] text-[11px] text-white/60">Stock: 24 u.</p>
+</div>
+</div>
+<!-- Product Card 2: Pan Francés -->
+<div class="bg-app-card rounded-[28px] flex flex-col min-h-[220px] relative overflow-hidden active:scale-[0.98] transition-transform">
+<img alt="Pan Francés" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWzP_s0e3oc_lTuMl_zDSc3BEKLESraPOIc4qtN5RZzrPG243y_4diAEaRzX-5OaBSkRZ3EW0BxfUJiSmseXLF8kXPgPRoH99cmeiPb6alzbQrjAwL0-fuxxhB1KLIIwupdF8TjZsgjCaubhojIAvRXu65PPNP5IvT2NG1C8B50gqYsBRt7WOg-NQyjcDdrKA2_mHFuPUe3VxaLmOyyL-AXSZJ5-rMWuVUbew6agZk6CrJp9wwoS5XMbOJDAguP-fm7orB6uGlT5w">
+<div class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold font-['Geist']">S/ 0.30</div>
+<div class="p-4 relative z-10 mt-auto">
+<h3 class="font-['Geist'] font-semibold text-white text-sm">Pan Francés</h3>
+<p class="font-['Geist'] text-[11px] text-white/60">Stock: 120 u.</p>
+</div>
+</div>
+<!-- Product Card 3: Papas Lay's -->
+<div class="bg-app-card rounded-[28px] flex flex-col min-h-[220px] relative overflow-hidden active:scale-[0.98] transition-transform">
+<img alt="Papas Lay's" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdQAZFQEedScscmBl0Fl-lere8Zd6Z_ijdNpVUEzcO_lTXnzWViCGOyNZx5_BYGYie1Hhy80IByCxgikf_6fGay-Eo97x7D6iKN_sPm6JI-eapSKQXMudIywZszF7d5Pf2r7RPP6eOyHOovNUwBG5PAGwmFycqDgkuR10SnmSOddccYnLwKCIPNsNthEFdF8mMSbgFQZFwsoMYhxP8beIxpVNNDErVRHtpoLen2wyJVc_azl7g-jB4ephFB8d4ceGTxOMXaT48AhY">
+<div class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold font-['Geist']">S/ 4.20</div>
+<div class="p-4 relative z-10 mt-auto">
+<h3 class="font-['Geist'] font-semibold text-white text-sm">Papas Lay's</h3>
+<p class="font-['Geist'] text-[11px] text-white/60">Stock: 15 u.</p>
+</div>
+</div>
+<!-- Product Card 4: Agua Cielo -->
+<div class="bg-app-card rounded-[28px] flex flex-col min-h-[220px] relative overflow-hidden active:scale-[0.98] transition-transform">
+<img alt="Agua Cielo 625ml" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ZuKO7vxfoRp5rmSbumi8FIyZp-Cw21LXgBT6GwISlRnevVFnSwNZ7msAE9efTNPNkKl6flrdiUlkVWjDtvdGV7ykuyv3cpzmh83Mt_tyazwWb1XsnvCgdqQuoC3pVEBgBJYP8GxrFt5i4m0MZrLIw7xxRUV9wgeVDPd5TnmmOK8tA5GiuRgDyjanpFHFbvPCRTQzjelDLITBKQN9R_5vAeGrxurmgOPfHwbkYypcrB5D-fu1F9kNJEuc1whMLwX6U_EM90Y_Cro">
+<div class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold font-['Geist']">S/ 2.00</div>
+<div class="p-4 relative z-10 mt-auto">
+<h3 class="font-['Geist'] font-semibold text-white text-sm">Agua Cielo 625ml</h3>
+<p class="font-['Geist'] text-[11px] text-white/60">Stock: 48 u.</p>
+</div>
+</div>
+<!-- Product Card 5: Café Altomayo -->
+<div class="bg-app-card rounded-[28px] flex flex-col min-h-[220px] relative overflow-hidden active:scale-[0.98] transition-transform">
+<img alt="Café Altomayo" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK17U5p3B8n_iIA43emZg0Xwf2ejxUyBWooPBnHVo5nKRiS5Rx1XK9o82LGz5PhUINi94TgooQVaIYVGXOZYXJFF7WNVmahv8E8OaUHUa_-_NHF25PBwSHgZUxnqXSsXvyuK6AT0MkNZdx8F_s_dplz_BylPCBKCJQhBL-QOdumjX3GPPujN9M1GoVegxM5x4D4t04ujscZ9U7KIkOfIQNZdvnQjjKRRwshOydenAjmvLNVPomMuElzoXvnJTfXe9C8KELhpU4qbs">
+<div class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold font-['Geist']">S/ 1.50</div>
+<div class="p-4 relative z-10 mt-auto">
+<h3 class="font-['Geist'] font-semibold text-white text-sm">Café Altomayo</h3>
+<p class="font-['Geist'] text-[11px] text-white/60">Stock: 30 u.</p>
+</div>
+</div>
+<!-- Product Card 6: Arroz Costeño -->
+<div class="bg-app-card rounded-[28px] flex flex-col min-h-[220px] relative overflow-hidden active:scale-[0.98] transition-transform">
+<img alt="Arroz Costeño 1kg" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuGgdG3hMgVCOTIsO54-plnFH-h5T8C7bZtavOtDbXr_YSpnECdhEY4YV2s1_UqMrs3fnAzAijyKiqduRBimY5WHNKZvZK0Ct9sH6rEpnU0y4Qztw0uRRLDS7v-UoI6rEQBZdLjjvT45zo9fC_mwT0y8MgxrXrv76fy97_jE-4qKoNdhJQrT_4TMvwXiWlmXiKqyAOBVkF4F025Rtpy7Epb7C0CnE4xmn1X2zzXi-CtEdAJkw4DhyFzSxbRs6hhAOGSWmqrQUXcg4">
+<div class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent"></div>
+<div class="absolute top-3 right-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold font-['Geist']">S/ 12.50</div>
+<div class="p-4 relative z-10 mt-auto">
+<h3 class="font-['Geist'] font-semibold text-white text-sm">Arroz Costeño 1kg</h3>
+<p class="font-['Geist'] text-[11px] text-white/60">Stock: 60 u.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Cart Sticky Panel -->
+<div class="fixed bottom-[112px] left-0 right-0 z-40 px-5 pointer-events-none">
+<div class="max-w-lg mx-auto bg-app-card/90 backdrop-blur-2xl rounded-full pointer-events-auto border-white/10 flex items-center justify-between p-3">
+<div class="flex items-center gap-3 ml-2">
+<div class="relative w-12 h-12 bg-[#c1d72e] rounded-full flex items-center justify-center shrink-0" style="background-color: rgb(164, 198, 57);">
+<span class="material-symbols-outlined text-black text-xl">shopping_cart</span>
+<div class="absolute -top-1 -right-1 bg-[#adc1f3] text-black w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-[#161616]">12</div>
+</div>
+<div class="flex flex-col"><p class="text-[11px] text-primary/50 font-['Geist'] leading-tight">Subtotal</p><p class="text-xl font-bold text-white font-['Bai_Jamjuree'] leading-tight">S/ 45.20</p></div>
+</div>
+<button class="bg-[#adc1f3] text-[#1a2b5a] mr-2 rounded-full flex items-center gap-2 font-['Geist'] font-bold active:scale-95 transition-transform shadow-lg h-11 px-6 text-base">Carrito</button>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Identical to Inicio) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-app-card flex justify-around items-center h-20 px-4 z-50">
+<!-- Tab 1: Inicio -->
+<button class="flex flex-col items-center justify-center text-white/50 hover:text-white transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-['Geist'] font-medium text-[10px] mt-1">Inicio</span>
+</button>
+<!-- Tab 2: Ventas (Active) -->
+<button class="flex flex-col items-center justify-center text-primary transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-['Geist'] font-medium text-[10px] mt-1">Ventas</span>
+</button>
+<!-- Tab 3: Trax (FAB) -->
+<button class="flex flex-col items-center justify-center relative -top-6 group">
+<div class="w-16 h-16 rounded-full bg-white text-app-bg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</button>
+<!-- Tab 4: Negocio -->
+<button class="flex flex-col items-center justify-center text-white/50 hover:text-white transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">storefront</span>
+<span class="font-['Geist'] font-medium text-[10px] mt-1">Negocio</span>
+</button>
+<!-- Tab 5: Crecer -->
+<button class="flex flex-col items-center justify-center text-white/50 hover:text-white transition-opacity duration-200">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+<span class="font-['Geist'] font-medium text-[10px] mt-1">Crecer</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => el.style.transform = 'scale(0.95)');
+            el.addEventListener('mouseup', () => el.style.transform = '');
+            el.addEventListener('mouseleave', () => el.style.transform = '');
+        });
+    </script>
+
+
+
+
+</body></html>
