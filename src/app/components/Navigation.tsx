@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Container from "../../imports/Container/Container";
 import HtmlBody from "../../imports/Html→Body/Html→Body";
-import Navbar8 from "../../imports/Navbar8/Navbar8";
+import BottomNavBar from "../../imports/BottomNavBar/BottomNavBar";
 
 type Screen = "inicio" | "ventas" | "negocio" | "crecer";
 
@@ -10,15 +10,13 @@ export default function Navigation() {
 
   return (
     <div className="size-full bg-black overflow-auto relative [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-      <div className="mx-auto w-full max-w-[430px] pb-[100px]">
+      <div className="mx-auto w-full max-w-[430px] pb-[180px]">
         {currentScreen === "inicio" && <Container />}
         {currentScreen === "ventas" && <HtmlBody />}
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 h-[92px] z-50 flex justify-center">
-        <div className="w-[375px] h-full origin-bottom scale-x-[1.15] scale-y-100">
-          <Navbar8 />
-        </div>
+      <div className="fixed bottom-[32px] left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-[398px] h-[80px] z-50">
+        <BottomNavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       </div>
     </div>
   );
