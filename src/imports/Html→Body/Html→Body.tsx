@@ -1,3 +1,4 @@
+import { useState } from "react";
 import svgPaths from "./svg-xf1k0jti7a";
 import imgIncaKola500Ml from "./7a7a1a54128ef8e3dee020a1832b332677bb1994.png";
 import imgPanFrances from "./1c39aebd1210a98a2c75e829f94bd8645a88f4eb.png";
@@ -6,6 +7,7 @@ import imgAguaCielo625Ml from "./7116e7f14366b3de536ae878d0d68b60ba863748.png";
 import imgCafeAltomayo from "./738991cfc153ecd60d0d17f1aa95d7363de49eeb.png";
 import imgArrozCosteno1Kg from "./2a5a5d04c1cbde4cdb39bd0b1e366e37882d08eb.png";
 import imgUserProfilePhoto from "./4cf959c18b729fe922c16cc3a6fed53eeb16ef8a.png";
+import CartModal from "../../app/components/CartModal";
 
 function Margin() {
   return (
@@ -600,9 +602,9 @@ function Margin2() {
   );
 }
 
-function Button5() {
+function Button5({ onClick }: { onClick: () => void }) {
   return (
-    <div className="bg-[#adc1f3] content-stretch flex h-[44px] items-center justify-center pb-[10.5px] pt-[9.5px] px-[24px] relative rounded-[9999px] shrink-0" data-name="Button">
+    <div onClick={onClick} className="bg-[#adc1f3] content-stretch flex h-[44px] items-center justify-center pb-[10.5px] pt-[9.5px] px-[24px] relative rounded-[9999px] shrink-0 cursor-pointer active:scale-95 transition-transform" data-name="Button">
       <div className="-translate-y-1/2 absolute bg-[rgba(255,255,255,0)] h-[44px] left-0 right-0 rounded-[9999px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] top-1/2" data-name="Button:shadow" />
       <div className="[word-break:break-word] flex flex-col font-['Geist:Regular',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#1a2b5a] text-[16px] text-center whitespace-nowrap">
         <p className="leading-[24px]">Carrito</p>
@@ -611,31 +613,31 @@ function Button5() {
   );
 }
 
-function ButtonMargin() {
+function ButtonMargin({ onClick }: { onClick: () => void }) {
   return (
     <div className="content-stretch flex flex-col h-[44px] items-start pr-[8px] relative shrink-0" data-name="Button:margin">
-      <Button5 />
+      <Button5 onClick={onClick} />
     </div>
   );
 }
 
-function OverlayOverlayBlur6() {
+function OverlayOverlayBlur6({ onClick }: { onClick: () => void }) {
   return (
     <div className="backdrop-blur-[20px] bg-[rgba(22,22,22,0.9)] max-w-[512px] relative rounded-[9999px] shrink-0 w-full" data-name="Overlay+OverlayBlur">
       <div className="flex flex-row items-center max-w-[inherit] size-full">
         <div className="content-stretch flex items-center justify-between max-w-[inherit] p-[12px] relative size-full">
           <Margin2 />
-          <ButtonMargin />
+          <ButtonMargin onClick={onClick} />
         </div>
       </div>
     </div>
   );
 }
 
-function FloatingCartStickyPanel() {
+function FloatingCartStickyPanel({ onClick }: { onClick: () => void }) {
   return (
     <div className="fixed bottom-[132px] left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[390px] z-30" data-name="Floating Cart Sticky Panel">
-      <OverlayOverlayBlur6 />
+      <OverlayOverlayBlur6 onClick={onClick} />
     </div>
   );
 }
@@ -910,8 +912,10 @@ function BottomNavigationBarIdenticalToInicio() {
 }
 
 export default function HtmlBody() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
   return (
-    <div className="flex flex-col size-full bg-black" data-name="Html → Body">
+    <div className="flex flex-col size-full bg-black relative" data-name="Html → Body">
       {/* Fixed Header */}
       <div className="fixed top-0 w-full max-w-[430px] z-40 bg-black/80 backdrop-blur-xl">
         <HeaderTopAppBar />
@@ -931,7 +935,22 @@ export default function HtmlBody() {
       </div>
 
       {/* Floating Cart */}
-      <FloatingCartStickyPanel />
+      <FloatingCartStickyPanel onClick={() => setIsCartOpen(true)} />
+
+      {/* Cart Modal */}
+      {isCartOpen && (
+        <div className="fixed inset-0 z-[100] flex items-end justify-center animate-fade-in">
+          {/* Background overlay */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsCartOpen(false)}
+          />
+          {/* Modal content */}
+          <div className="relative w-full max-w-[430px] h-[calc(100%-64px)] animate-slide-up" onClick={(e) => e.stopPropagation()}>
+            <CartModal onClose={() => setIsCartOpen(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
